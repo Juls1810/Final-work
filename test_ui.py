@@ -14,6 +14,7 @@ def test_search_by_name():
     driver.implicitly_wait(20)
     driver.find_element(By.NAME, "kp_query").send_keys("Zootopia")
     keyboard.send("enter")
+    sleep(10)
     driver.quit()
 
 
@@ -25,7 +26,8 @@ def test_aut_phone_number():
     sleep(15)
     driver.find_element(By.CLASS_NAME, 'styles_loginButton__6_QNl').click()
     driver.find_element(By.CLASS_NAME, 'Textinput-Control_phone-mask').send_keys("9046841027")
-    driver.find_element(By.CSS_SELECTOR, '#passp:sign-in').click()
+    keyboard.send("enter")
+    sleep(12)
     driver.quit()
 
 def test_aut_phone_number_neg():
@@ -36,7 +38,8 @@ def test_aut_phone_number_neg():
     sleep(15)
     driver.find_element(By.CLASS_NAME, 'styles_loginButton__6_QNl').click()
     driver.find_element(By.CLASS_NAME, 'Textinput-Control_phone-mask').send_keys("904")
-    driver.find_element(By.CLASS_NAME, 'Button2_width_max Button2_type_submit').click()
+    keyboard.send("enter")
+    sleep(12)
     driver.quit()
 
 def test_search_by_actor_name():
@@ -46,8 +49,8 @@ def test_search_by_actor_name():
     driver.get("https://www.kinopoisk.ru/")
     driver.implicitly_wait(20)
     driver.find_element(By.NAME, "kp_query").send_keys("Петров")
-    sleep(12)
     keyboard.send("enter")
+    sleep(12)
     driver.quit()
 
 def test_search_by_genre():
@@ -58,6 +61,7 @@ def test_search_by_genre():
     driver.implicitly_wait(20)
     driver.find_element(By.NAME, "kp_query").send_keys("Анимэ")
     keyboard.send("enter")
+    sleep(10)
     driver.quit()
 
 
