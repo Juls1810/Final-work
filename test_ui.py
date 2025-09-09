@@ -7,16 +7,14 @@ import keyboard
 import pytest
 
 @pytest.fixture
-def browser():
-    browser = webdriver.Firefox()
-    yield browser
-    browser.quit()
-
-def test_search_by_name():
-    # поиск фильма по названию на английском
+def driver():
     driver = webdriver.Firefox()
     driver.maximize_window()
-    driver.get("https://www.kinopoisk.ru/")
+    yield driver
+    driver.quit()
+
+def test_search_by_name(driver):
+    # поиск фильма по названию на английском
     driver.get("https://www.kinopoisk.ru/")
     driver.implicitly_wait(20)
     driver.find_element(By.NAME, "kp_query").send_keys("Zootopia")
