@@ -4,17 +4,19 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import keyboard
+import pytest
 
-# @pytest.fixture
-# def browser():
-#     browser = webdriver.Firefox()
-#     yield browser
-#     browser.quit()
+@pytest.fixture
+def browser():
+    browser = webdriver.Firefox()
+    yield browser
+    browser.quit()
 
 def test_search_by_name():
     # поиск фильма по названию на английском
     driver = webdriver.Firefox()
     driver.maximize_window()
+    driver.get("https://www.kinopoisk.ru/")
     driver.get("https://www.kinopoisk.ru/")
     driver.implicitly_wait(20)
     driver.find_element(By.NAME, "kp_query").send_keys("Zootopia")
@@ -22,7 +24,6 @@ def test_search_by_name():
     push_window = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "name")))
     assert "Зверополис" in push_window.text
-    driver.quit()
 
 
 def test_aut_phone_number():
@@ -30,6 +31,7 @@ def test_aut_phone_number():
     driver = webdriver.Firefox()
     driver.maximize_window()
     driver.get("https://www.kinopoisk.ru/")
+    driver.implicitly_wait(20)
     driver.find_element(By.CLASS_NAME, 'styles_loginButton__6_QNl').click()
     driver.find_element(By.CLASS_NAME, 'Textinput-Control_phone-mask').send_keys("9046841027")
     keyboard.send("enter")
@@ -43,6 +45,7 @@ def test_aut_phone_number_neg():
     driver = webdriver.Firefox()
     driver.maximize_window()
     driver.get("https://www.kinopoisk.ru/")
+    driver.implicitly_wait(20)
     driver.find_element(By.CLASS_NAME, 'styles_loginButton__6_QNl').click()
     driver.find_element(By.CLASS_NAME, 'Textinput-Control_phone-mask').send_keys("904")
     keyboard.send("enter")
@@ -70,6 +73,7 @@ def test_search_by_genre():
     driver = webdriver.Firefox()
     driver.maximize_window()
     driver.get("https://www.kinopoisk.ru/")
+    driver.implicitly_wait(20)
     driver.find_element(By.NAME, "kp_query").send_keys("Анимэ")
     keyboard.send("enter")
     push_window = WebDriverWait(driver, 10).until(
