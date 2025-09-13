@@ -7,6 +7,8 @@ headers = {
         'X-API-KEY': 'VPCDTQ7-47B44DY-QBGZ77D-YM7HV9D',
         'Content-Type': 'application/json'
     }
+
+
 @allure.title("API тестирование сервиса Кинопоиск")
 @allure.description("Тестs проверяют возможность авторизации на портале с валидным и невалидным номером телефона,"
                     " а так же поиск фильмов,жанров и актеров")
@@ -21,6 +23,7 @@ def test_kp_search_by_id():
     assert resp.status_code == 200
     assert resp.json()["id"] == 666
     assert resp.json()["name"] == "Форсаж"
+
 
 def test_kp_search_by_name():
     """

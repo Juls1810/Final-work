@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -7,10 +6,9 @@ from selenium.webdriver.support import expected_conditions as EC
 import keyboard
 import pytest
 
-class SearchPageKP:
-    """
+class SearchPageKP:"""
                    Конструктор класса SearchPageKP
-        """
+    """
     def __init__(self, driver):
         self._driver = driver
 
@@ -34,5 +32,4 @@ class SearchPageKP:
         push_window = WebDriverWait(self._driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, "name")))
         assert "Аниме" in push_window.text
-
 
