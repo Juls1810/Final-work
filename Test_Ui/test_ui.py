@@ -19,28 +19,17 @@ def driver():
 @allure.feature("Сервис Кинопоиск")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_ui(driver):
+    """
+Тесты интерфейса:первый тест проверяет авторизицию с валидным номером телефона, второй с невалидным,
+третий тест проверят поиск фильма по названию, четвертый поиск аактера, и пятый поиск по жанру
+    """
     with allure.step("Обьявляем переменную"):
-    log_page = LoginPageKP(driver)
-    """
-            Тест проверяет позможность авторизации с валидным номером
-    """
-    log_page.aut_phone_number()
-    """
-        Тест проверяет позможность авторизации с не валидным номером
-    """
-    log_page.aut_phone_number_neg()
+        log_page = LoginPageKP(driver)
+        log_page.aut_phone_number()
+        log_page.aut_phone_number_neg()
 
     with allure.step("Обьявляем переменную"):
-    cearch_page = SearchPageKP(driver)
-    """
-            Тест проверяет позможность поиска по названию фильма
-    """
-    cearch_page.search_by_name()
-    """
-               Тест проверяет позможность поиска по имени актера
-       """
-    cearch_page.search_by_actor_name()
-    """
-               Тест проверяет позможность поиска по жанру
-       """
-    cearch_page.search_by_genre()
+        cearch_page = SearchPageKP(driver)
+        cearch_page.search_by_name()
+        cearch_page.search_by_actor_name()
+        cearch_page.search_by_genre()

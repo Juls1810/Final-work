@@ -6,7 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 import keyboard
 import pytest
 
-class SearchPageKP:"""
+class SearchPageKP:
+    """
                    Конструктор класса SearchPageKP
     """
     def __init__(self, driver):

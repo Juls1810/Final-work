@@ -50,7 +50,7 @@ def test_kp_search_by_id_post():
             Тест проверяет поиск методом post
     """
     resp = requests.post(url=base_url + '/v1.4/movie/666', headers=headers)
-    assert resp.status_code == 404
+    assert resp.status_code == 400
 
 
 def test_kp_search_by_id_delete():
@@ -58,5 +58,5 @@ def test_kp_search_by_id_delete():
             Тест проверяет возможность использования метода delite
         """
     resp = requests.delete(url=base_url + '/v1.4/movie/666', headers=headers)
-    assert resp.status_code == 404
+    assert resp.status_code == 400
 

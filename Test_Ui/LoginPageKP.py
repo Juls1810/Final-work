@@ -7,9 +7,9 @@ import keyboard
 import pytest
 
 
-class LoginhPageKP:
+class LoginPageKP:
     """
-           Конструктор класса LoginhPageKP
+           Конструктор класса LoginPageKP
     """
     def __init__(self, driver):
         self._driver = driver
